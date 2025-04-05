@@ -22,7 +22,8 @@ function Home() {
                         <NotificationBox />
                     </>
                 } />
-                <Route path='/admission' element={<Admission />} >
+                <Route path='/admission' >
+                <Route index element={<Admission/>} />
                  {/* <Route path="/apply" element={<Admissionform/>}/> */}
                 </Route>
                 <Route path="/faculties" element={<Staff/>} />

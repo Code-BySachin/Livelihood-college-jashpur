@@ -8,7 +8,7 @@ function Navbar() {
             <ul className="flex justify-around w-300 py-8 hover:border-b-1">
                 <Link to={'/'} className=' hover:border-b-1 hover:text-blue-700'>Home</Link>        
                 <Link to={'/admission'} className=' hover:border-b-1 hover:text-blue-700'>Admissions</Link>
-                <Link to={'/staff'} className=' hover:border-b-1 hover:text-blue-700'>Faculties</Link>
+                <Link to={'/faculties'} className=' hover:border-b-1 hover:text-blue-700'>Faculties</Link>
                 <Link to={'/course'} className=' hover:border-b-1 hover:text-blue-700'>Departments</Link>
                 <Link to={'/about'} className=' hover:border-b-1 hover:text-blue-700'>About</Link>
                 <Link to={'/contact'} className=' hover:border-b-1 hover:text-blue-700'>Contact</Link>
