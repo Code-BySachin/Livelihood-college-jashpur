@@ -7,7 +7,7 @@ import Admission from "./Admission";
 import AboutUS from "./AboutUs";
 import Contact from "./Contact";
 import { BrowserRouter, Routes, Route } from 'react-router'
-import Admissionform from "./Admissionform";
+import AdmissionForm from "./AdmissionForm";
 import Staff from "./Staff";
 import Course from "./Course";
 function Home() {
@@ -23,11 +23,11 @@ function Home() {
                     </>
                 } />
                 <Route path='/admission' >
-                <Route index element={<Admission/>} />
-                 {/* <Route path="/apply" element={<Admissionform/>}/> */}
+                    <Route index element={<Admission />} />
+                    <Route path="apply" element={<AdmissionForm/>}/>
                 </Route>
-                <Route path="/faculties" element={<Staff/>} />
-                <Route path="/course" element={<Course/>} />
+                <Route path="/faculties" element={<Staff />} />
+                <Route path="/course" element={<Course />} />
                 <Route path='/contact' element={<Contact />} />
                 <Route path='/about' element={<AboutUS />} />
             </Routes>

@@ -1,72 +1,103 @@
-import React, { useState } from "react";
+import React, { useState } from 'react';
 
-export default function Admissionform() {
-  // State to show/hide the form
-  const [showForm, setShowForm] = useState(false);
+const AdmissionForm = () => {
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    phone: '',
+    course: '',
+    address: '',
+  });
+
+  const handleChange = (e) => {
+    setFormData((prev) => ({
+      ...prev,
+      [e.target.name]: e.target.value,
+    }));
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log('Submitted Data:', formData);
+    alert('Form submitted successfully!');
+    // You can add API call here
+  };
 
   return (
-    <div className="bg-gray-100">
-      {/* Hero Section */}
-      <div className="bg-blue-900 text-white text-center py-16">
-        <h1 className="text-4xl font-bold">Admissions Open 2025</h1>
-        <p className="text-lg mt-2">Join Government Livelihood College and shape your future.</p>
-      </div>
-
-      {/* Apply Now Section */}
-      <div className="bg-blue-900 text-white text-center py-12">
-        <h2 className="text-2xl font-bold">Apply Now for 2025 Admissions</h2>
-        <p className="text-lg mt-2">Start your journey with us today.</p>
-        <button 
-          className="mt-4 px-6 py-2 bg-yellow-400 text-black font-semibold rounded-lg hover:bg-yellow-500 transition"
-          onClick={() => setShowForm(true)} // Open form on click
-        >
-          Apply Now
-        </button>
-      </div>
-
-      {/* Admission Form (Shown when showForm is true) */}
-      {showForm && (
-        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
-          <div className="bg-white p-6 rounded-lg shadow-lg w-96">
-            <h2 className="text-xl font-bold mb-4">Admission Form</h2>
-
-            <form>
-              <label className="block mb-2">Full Name:</label>
-              <input type="text" className="w-full border p-2 rounded mb-3" placeholder="Enter your name" />
-
-              <label className="block mb-2">Email:</label>
-              <input type="email" className="w-full border p-2 rounded mb-3" placeholder="Enter your email" />
-
-              <label className="block mb-2">Phone Number:</label>
-              <input type="text" className="w-full border p-2 rounded mb-3" placeholder="Enter your phone number" />
-
-              <label className="block mb-2">Select Course:</label>
-              <select className="w-full border p-2 rounded mb-3">
-                <option>Diploma in IT</option>
-                <option>Diploma in Healthcare</option>
-                <option>Diploma in Mechanical</option>
-              </select>
-
-              {/* Submit & Cancel Buttons */}
-              <div className="flex justify-between mt-4">
-                <button 
-                  type="submit" 
-                  className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700"
-                >
-                  Submit
-                </button>
-                <button 
-                  type="button" 
-                  className="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600"
-                  onClick={() => setShowForm(false)} // Close form on click
-                >
-                  Cancel
-                </button>
-              </div>
-            </form>
-          </div>
+    <div className="max-w-xl mx-auto p-6 bg-white shadow-2xl rounded-2xl mt-10">
+      <h2 className="text-2xl font-bold mb-6 text-center">Livelihood College Admission Form</h2>
+      <form onSubmit={handleSubmit} className="space-y-4">
+        <div>
+          <label className="block text-sm font-medium mb-1">Full Name</label>
+          <input
+            type="text"
+            name="name"
+            value={formData.name}
+            onChange={handleChange}
+            className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
+            required
+          />
         </div>
-      )}
+        <div>
+          <label className="block text-sm font-medium mb-1">Email Address</label>
+          <input
+            type="email"
+            name="email"
+            value={formData.email}
+            onChange={handleChange}
+            className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
+            required
+          />
+        </div>
+        <div>
+          <label className="block text-sm font-medium mb-1">Phone Number</label>
+          <input
+            type="tel"
+            name="phone"
+            value={formData.phone}
+            onChange={handleChange}
+            className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
+            required
+          />
+        </div>
+        <div>
+          <label className="block text-sm font-medium mb-1">Select Course</label>
+          <select
+            name="course"
+            value={formData.course}
+            onChange={handleChange}
+            className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
+            required
+          >
+            <option value="">-- Select a course --</option>
+            <option value="fashion-designing">Fashion Designing</option>
+            <option value="automobile">Automobile Repair</option>
+            <option value="computer">Computer Training</option>
+            <option value="electrical">Electrical Technician</option>
+          </select>
+        </div>
+        <div>
+          <label className="block text-sm font-medium mb-1">Address</label>
+          <textarea
+            name="address"
+            value={formData.address}
+            onChange={handleChange}
+            className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
+            rows="3"
+            required
+          ></textarea>
+        </div>
+        <div className="text-center">
+          <button
+            type="submit"
+            className="bg-blue-600 text-white px-6 py-2 rounded-md hover:bg-blue-700 transition"
+          >
+            Submit Application
+          </button>
+        </div>
+      </form>
     </div>
   );
-}
+};
+
+export default AdmissionForm;
