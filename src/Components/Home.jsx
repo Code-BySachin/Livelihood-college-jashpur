@@ -27,7 +27,7 @@ function Home() {
                     <Route path="apply" element={<AdmissionForm/>}/>
                 </Route>
                 <Route path="/faculties" element={<Staff />} />
-                <Route path="/course" element={<Course />} />
+                <Route path="schemes/course" element={<Course />} />
                 <Route path='/contact' element={<Contact />} />
                 <Route path='/about' element={<AboutUS />} />
             </Routes>
