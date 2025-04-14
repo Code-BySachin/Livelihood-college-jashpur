@@ -8,8 +8,8 @@ import AboutUS from "./AboutUs";
 import Contact from "./Contact";
 import { BrowserRouter, Routes, Route } from 'react-router'
 import AdmissionForm from "./AdmissionForm";
-import Staff from "./Staff";
 import Course from "./Course";
+import StaffPage from "./StaffPage";
 function Home() {
     return (
         <BrowserRouter>
@@ -26,7 +26,7 @@ function Home() {
                     <Route index element={<Admission />} />
                     <Route path="apply" element={<AdmissionForm/>}/>
                 </Route>
-                <Route path="/faculties" element={<Staff />} />
+                <Route path="/faculties" element={<StaffPage />} />
                 <Route path="schemes/course" element={<Course />} />
                 <Route path='/contact' element={<Contact />} />
                 <Route path='/about' element={<AboutUS />} />

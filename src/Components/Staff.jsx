@@ -3,8 +3,7 @@ import './Staff.css'
 
 const Staff = () => {
   return (
-    <div className="staff-page">
-      <h1>Staff</h1>
+    
       <div className="staff-list">
         {staffData.map((staff) => (
           <div key={staff.id} className="staff-card">
@@ -15,7 +14,6 @@ const Staff = () => {
           </div>
         ))}
       </div>
-    </div>
   );
 };
 

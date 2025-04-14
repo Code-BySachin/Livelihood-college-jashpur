@@ -1,6 +1,7 @@
 .staff-page {
     text-align: center;
     padding: 20px;
+    display: flex;
   }
   
   .staff-list {
