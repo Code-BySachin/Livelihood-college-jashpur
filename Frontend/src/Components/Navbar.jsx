@@ -46,7 +46,7 @@ function Navbar() {
                         </li>
                     </ul>
                 </div>
-                <NavLink to={'/about'} className={({ isActive }) => isActive ? ' border-b-1 text-blue-700' : ' hover:border-b-1 hover:text-blue-700'}>About</NavLink>
+                <NavLink to={'/faqs'} className={({ isActive }) => isActive ? ' border-b-1 text-blue-700' : ' hover:border-b-1 hover:text-blue-700'}>FAQ</NavLink>
                 <NavLink to={'/contact'} className={({ isActive }) => isActive ? ' border-b-1 text-blue-700' : ' hover:border-b-1 hover:text-blue-700'}>Contact</NavLink>
             </ul>
         </nav>
