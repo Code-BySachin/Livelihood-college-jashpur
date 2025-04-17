@@ -23,7 +23,7 @@ export default function Footer() {
 
         {/* Quick Links */}
         <div>
-          <h3 className="text-lg font-semibold mb-3">Web Links</h3>
+          <h3 className="text-lg font-semibold mb-3">Quick Links</h3>
           <ul className="space-y-2">
             <li><a href="https://jashpur.nic.in/en/" className="hover:underline">Jashpur District</a></li>
             <li><a href="#" className="hover:underline">Admissions</a></li>
