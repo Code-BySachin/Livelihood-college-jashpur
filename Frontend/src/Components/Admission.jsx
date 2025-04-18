@@ -69,19 +69,6 @@ export default function Admission() {
           <Link to="apply">Apply Now</Link>
         </button>
       </div>
-
-      {/* FAQ Section */}
-      <div className="container mx-auto px-6 py-12">
-        <h2 className="text-2xl font-bold text-center mb-6">Frequently Asked Questions</h2>
-        <div className="bg-white shadow-md rounded-lg p-6">
-          <h3 className="font-semibold text-lg">When is the last date to apply?</h3>
-          <p className="text-gray-600">Applications close on 30th June 2025.</p>
-        </div>
-        <div className="bg-white shadow-md rounded-lg p-6 mt-4">
-          <h3 className="font-semibold text-lg">Is there any entrance exam?</h3>
-          <p className="text-gray-600">Yes, for some courses entrance exams are required.</p>
-        </div>
-      </div>
     </div>
   );
 }
