@@ -2,7 +2,7 @@ import { NavLink, Link } from 'react-router-dom';
 function Navbar() {
     return (
 
-        <nav className="flex  border-b-1">
+        <nav className="flex  border-b-1 sticky top-1 z-50 bg-white">
             <ul className="flex justify-around w-300 py-8 hover:border-b-1">
                 <NavLink to={'/'} className={({ isActive }) => isActive ? ' border-b-1 text-blue-700' : ' hover:border-b-1 hover:text-blue-700'}>Home</NavLink>
                 <NavLink to={'/admission'} className={({ isActive }) => isActive ? ' border-b-1 text-blue-700' : ' hover:border-b-1 hover:text-blue-700'}>Admissions</NavLink>
