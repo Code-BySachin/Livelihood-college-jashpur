@@ -1,52 +1,99 @@
-import { useRef} from "react";
-import leftArrow from '../assets/Icons/left-arrow.png'
-import rightArrow from '../assets/Icons/right-arrow.png'
+import { useRef, useEffect, useState } from "react";
+import leftArrow from "../assets/Icons/left-arrow.png";
+import rightArrow from "../assets/Icons/right-arrow.png";
+
 function Carousel() {
     const images = [
         "https://ascentgroupindia.com/wp-content/uploads/2021/08/25-Government-Schemes-that-are-Transforming-the-Lives-of-Rural-India.jpeg",
         "https://ascentgroupindia.com/wp-content/uploads/2021/08/25-Government-Schemes-that-are-Transforming-the-Lives-of-Rural-India.jpeg",
         "https://ascentgroupindia.com/wp-content/uploads/2021/08/25-Government-Schemes-that-are-Transforming-the-Lives-of-Rural-India.jpeg",
-        "https://ascentgroupindia.com/wp-content/uploads/2021/08/25-Government-Schemes-that-are-Transforming-the-Lives-of-Rural-India.jpeg",
-        "https://ascentgroupindia.com/wp-content/uploads/2021/08/25-Government-Schemes-that-are-Transforming-the-Lives-of-Rural-India.jpeg",
-        "https://ascentgroupindia.com/wp-content/uploads/2021/08/25-Government-Schemes-that-are-Transforming-the-Lives-of-Rural-India.jpeg",
         "https://ascentgroupindia.com/wp-content/uploads/2021/08/25-Government-Schemes-that-are-Transforming-the-Lives-of-Rural-India.jpeg"
-    ]
-    const imageRef = useRef([]);
-    const index = useRef(0);
-    console.log(imageRef);
+    ];
+
+    const containerRef = useRef(null);
+    const [hovering, setHovering] = useState(false);
+    const [activeIndex, setActiveIndex] = useState(0);
+
+    const scrollToImage = (i) => {
+        const container = containerRef.current;
+        if (!container) return;
+
+        const imageWidth = container.offsetWidth;
+        container.scrollTo({
+            left: imageWidth * i,
+            behavior: "smooth"
+        });
+
+        setActiveIndex(i);
+    };
+
     const handlePrev = () => {
-        index.current -= 1;
-        if (index.current >= 0) {
-            imageRef.current[index.current].scrollIntoView({ behavior: 'smooth' });
-            console.log("Prev");
-        }else{
-            index.current = 0;
-        }
-    }
+        const newIndex = activeIndex === 0 ? images.length - 1 : activeIndex - 1;
+        scrollToImage(newIndex);
+    };
+
     const handleNext = () => {
-        index.current +=1
-        if(index.current<imageRef.current.length){
-            imageRef.current[index.current].scrollIntoView({ behavior: 'smooth' });
-            console.log("Next");
-        }else{
-            index.current = imageRef.current.length -1;
-        }
+        const newIndex = activeIndex === images.length - 1 ? 0 : activeIndex + 1;
+        scrollToImage(newIndex);
+    };
 
+    useEffect(() => {
+        if (hovering) return;
 
-    }
+        const interval = setInterval(() => {
+            handleNext();
+        }, 3000);
+
+        return () => clearInterval(interval);
+    }, [hovering, activeIndex]);
 
     return (
-        <div>
-            <div className="flex overflow-scroll h-150" style={{ scrollbarWidth: "none" }}>{
-                images.map((image, index) => <img className="w-1/0 " key={index} src={image} alt="poster" ref={(e) => imageRef.current[index] = e} />)
-            }
+        <div
+            className="relative w-full"
+            onMouseEnter={() => setHovering(true)}
+            onMouseLeave={() => setHovering(false)}
+        >
+            <div
+                ref={containerRef}
+                className="flex overflow-x-auto no-scrollbar scroll-smooth"
+            >
+                {images.map((image, idx) => (
+                    <img
+                        key={idx}
+                        src={image}
+                        alt={`poster-${idx}`}
+                        className="min-w-full h-72 md:h-96 object-cover"
+                    />
+                ))}
             </div>
-            <div className="flex justify-between h-1">
-            {/* <div className="flex justify-between" style={{display:'none'}}> */}
-                <button className="relative bottom-80 cursor-pointer w-20 blur-xs" onClick={handlePrev}><img src={leftArrow} alt="<==" /></button>
-                <button className="relative bottom-80 cursor-pointer w-20 blur-xs" onClick={handleNext}><img src={rightArrow} alt="==>" /></button>
+
+            {/* Arrows */}
+            <button
+                onClick={handlePrev}
+                className="absolute top-1/2 left-2 transform -translate-y-1/2 bg-white/70 rounded-full p-2 shadow"
+            >
+                <img src={leftArrow} alt="Previous" className="w-6" />
+            </button>
+            <button
+                onClick={handleNext}
+                className="absolute top-1/2 right-2 transform -translate-y-1/2 bg-white/70 rounded-full p-2 shadow"
+            >
+                <img src={rightArrow} alt="Next" className="w-6" />
+            </button>
+
+            {/* Dots */}
+            <div className="absolute bottom-2 w-full flex justify-center space-x-2">
+                {images.map((_, idx) => (
+                    <button
+                        key={idx}
+                        onClick={() => scrollToImage(idx)}
+                        className={`w-3 h-3 rounded-full ${activeIndex === idx ? "bg-blue-700" : "bg-gray-400"
+                            }`}
+                    ></button>
+                ))}
             </div>
         </div>
-    )
+    );
 }
+
 export default Carousel;
