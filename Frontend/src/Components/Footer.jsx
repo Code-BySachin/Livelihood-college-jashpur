@@ -46,6 +46,7 @@ export default function Footer() {
       <div className="text-center text-gray-400 text-sm mt-6 border-t border-gray-700 pt-4">
         © 2025 Government Livelihood College. All Rights Reserved.
         <p>Last updated: <strong className="text-white">Apr 22, 2025</strong></p>
+        <p>Developed by: <strong className="text-white">Navgurukul</strong></p>
         <div className="flex flex-col md:flex-row justify-center items-center gap-4 mt-4">
           <img src={navgurukulLogo} alt="Navgurukul" className="h-10" />
           <img src={nicLogo} alt="NIC" className="h-10" />
