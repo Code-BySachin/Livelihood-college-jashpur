@@ -55,7 +55,7 @@ function Carousel() {
         >
             <div
                 ref={containerRef}
-                className="flex overflow-x-auto no-scrollbar scroll-smooth"
+                className="flex overflow-x-auto hide-scrollbar scroll-smooth"
             >
                 {images.map((image, idx) => (
                     <img
