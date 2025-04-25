@@ -205,7 +205,7 @@ export default function Admission() {
       <div className="bg-blue-900 text-white text-center py-12">
         <h2 className="text-2xl font-bold">Apply Now for 2025 Admissions</h2>
         <p className="text-lg mt-2">Start your journey with us today.</p>
-        <Link to="/apply">
+        <Link to="/admission/apply">
           <button className="mt-4 px-6 py-2 bg-yellow-400 text-black font-semibold rounded-lg hover:bg-yellow-500 transition">
             Apply Now
           </button>

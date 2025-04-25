@@ -12,23 +12,21 @@ import { BrowserRouter, Routes, Route } from 'react-router'
 import Faqs from "./Components/Faqs";
 
 function App() {
-  return(
+  return (
     <BrowserRouter>
-    <Header />
-    <Navbar />
-    <Routes>
-        <Route path='/' element={<Home/> } />
-        <Route path='/admission' >
-            <Route index element={<Admission />} />
-            <Route path="apply" element={<AdmissionForm/>}/>
-        </Route>
+      <Header />
+      <Navbar />
+      <Routes>
+        <Route path='/' element={<Home />} />
+        <Route path="/admission" element={<Admission />} />
+        <Route path="/admission/apply" element={<AdmissionForm />} />
         <Route path="/faculties" element={<StaffPage />} />
         <Route path="schemes/course" element={<Course />} />
-        <Route path='/contact' element={<Contact />} />
         <Route path='/faqs' element={<Faqs />} />
-    </Routes>
-    <Footer />
-</BrowserRouter>
+        <Route path='/contact' element={<Contact />} />
+      </Routes>
+      <Footer />
+    </BrowserRouter>
   )
 }
 

@@ -1,4 +1,4 @@
-import NotificationBox from "./NotificationBox";
+
 import Carousel from "./Carousel";
 import About from "./About";
 import AlertTicker from "./AlertTicker";
