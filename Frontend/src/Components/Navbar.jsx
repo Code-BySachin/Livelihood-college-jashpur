@@ -131,7 +131,7 @@ function Navbar() {
                                 : 'hover:border-b-1 hover:text-blue-700'
                         }
                     >
-                        Contact
+                        Contact.
                     </NavLink>
                 </ul>
             </div>
